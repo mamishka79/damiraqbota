@@ -157,3 +157,39 @@
     margin: 0;
   }
   
+  @media (max-width: 600px) {
+    /* Уменьшаем высоту шапки на мобильных устройствах */
+    .hero {
+      min-height: 40vh;
+    }
+    
+    /* Меньшие размеры шрифта для заголовка и параграфов */
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+    
+    /* Уменьшаем отступы в секциях */
+    section {
+      padding: 40px 10px;
+    }
+    
+    /* Делаем карту адаптивной */
+    section iframe {
+      width: 100% !important;
+      height: 250px;
+    }
+    
+    /* Уменьшаем отступы внутри формы */
+    .rsvp .form-container {
+      padding: 20px;
+    }
+    
+    /* Кнопка отправки на всю ширину */
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+  
