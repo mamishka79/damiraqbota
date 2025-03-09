@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дамир + Ақбота тойына шақыру</title>
+
+  <!-- Подключаем шрифты: Great Vibes, Playfair Display, Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" 
+    rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS для анимаций при скролле -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Подключаем наши стили -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Шапка (Hero) -->
+  <header class="hero" data-aos="fade-down" data-aos-duration="1000">
+    <div class="overlay">
+      <div class="hero-content">
+        <h1>Damir + Aqbota</h1>
+        <p>Қадірлі ағайын, туған-туыс, жора-жолдас, құда-жекжат, аға-әпке, іні-қарындас, бауырлар, сіздерді қуана күтеміз!</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Негізгі ақпарат -->
+  <section class="info" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Той туралы мәлімет</h2>
+    <ul>
+      <li><strong>Күні:</strong> Жексенбі, 20 сәуір 2025</li>
+      <li><strong>Уақыты:</strong> 17:00</li>
+      <li><strong>Мекенжай:</strong> Алматы қаласы, Халиуллин көшесі 210/31, Quanysh Grand Hall</li>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92928.11580230066!2d76.8661538972656!3d43.29324589999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836d9dc9956533%3A0x1358ae7e53087d22!2sKUANYSH%20GRAND%20HALL!5e0!3m2!1sru!2skz!4v1741546780727!5m2!1sru!2skz" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </ul>
+  </section>
+
+  <!-- Форма RSVP -->
+  <section class="rsvp" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Тойға қатысуыңызды растауыңызды сұраймыз!</h2>
+    <div class="form-container">
+      <form id="rsvpForm" onsubmit="submitForm(event)">
+        <!-- Аты-жөніңіз -->
+        <div class="form-group">
+          <label for="name">
+            Аты-жөніңіз (жұбайыңызбен келетін болсаңыз, екеуіңіздің атыңызды бірге жазуыңызды өтінеміз)
+          </label>
+          <input type="text" id="name" name="name" required placeholder="Атыңыз" />
+        </div>
+  
+        <!-- Қатысуыңыз -->
+        <div class="form-group">
+          <p>Қатысуыңыз:</p>
+          <div class="radio-group">
+            <input type="radio" id="attend1" name="attend" value="Әрине келемін" required>
+            <label for="attend1">Әрине келемін</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="attend2" name="attend" value="Жұбайыммен бірге келемін">
+            <label for="attend2">Жұбайыммен бірге келемін</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="attend3" name="attend" value="Өкінішке орай, келе алмаймын">
+            <label for="attend3">Өкінішке орай, келе алмаймын</label>
+          </div>
+        </div>
+  
+        <!-- Кнопка отправки -->
+        <button type="submit">Жауап беру</button>
+  
+        <!-- Сообщение о статусе отправки -->
+        <p id="statusMessage" class="status-message"></p>
+      </form>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1000">
+    <p>© 2025 Дамир + Ақбота. Көріскенше тойда!</p>
+  </footer>
+
+  <!-- Подключаем AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <!-- Основной скрипт (можно вынести в отдельный файл js/main.js) -->
+  <script>
+    // Вставьте сюда URL веб-приложения из Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzsBfYoINtz8cqn-BoHwFCXSn2Jef2rip9Xp0Hso7AK0FK1cI7cOGvP6mzRrG9-3MWG_w/exec';
+
+    async function submitForm(event) {
+      event.preventDefault(); // отменяем стандартное поведение формы
+
+      const form = document.getElementById('rsvpForm');
+      const statusMessage = document.getElementById('statusMessage');
+      statusMessage.textContent = '';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: formData
+        });
+
+        const json = await response.json();
+        if (json.result === 'success') {
+          statusMessage.style.color = 'green';
+          statusMessage.textContent = 'Рақмет! Жауабыңыз сәтті жіберілді.';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Бейтаныс қате');
+        }
+      } catch (error) {
+        statusMessage.style.color = 'red';
+        statusMessage.textContent = 'Қате орын алды. Кейінірек қайталап көріңіз.';
+      }
+    }
+  </script>
+</body>
+</html>

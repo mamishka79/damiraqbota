@@ -1,0 +1,159 @@
+/* Сброс стандартных отступов и шрифтов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Основные стили */
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: url('../images/background-body.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  
+  /* Шапка (Hero) */
+  .hero {
+    background: url('../images/background-header.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0); /* Можно добавить полупрозрачность */
+  }
+  .hero-content {
+    padding: 60px 20px;
+  }
+  .hero-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #A04646; /* Темноватый оттенок для контраста */
+    margin-bottom: 15px;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Общие секции */
+  section {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  section h2 {
+    font-size: 1.9rem;
+    color: #A04646;
+    margin-bottom: 20px;
+  }
+  section p {
+    font-size: 1rem;
+    color: #555;
+  }
+  section ul {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+  section li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  
+  /* Блок формы RSVP */
+  .rsvp .form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: left;
+  }
+  
+  /* Стили формы */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="tel"],
+  .form-group input[type="number"],
+  .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #E29587;
+  }
+  
+  /* Радио-кнопки */
+  .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+  }
+  
+  /* Кнопка отправки */
+  button[type="submit"] {
+    align-self: flex-start;
+    padding: 12px 24px;
+    background-color: #E29587;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+  }
+  button[type="submit"]:hover {
+    background-color: #D28477;
+  }
+  
+  /* Статус сообщения */
+  .status-message {
+    font-weight: 600;
+    min-height: 1.5em; /* чтобы место под сообщение было всегда */
+    margin-top: 10px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #F8EBE6;
+    color: #555;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+  }
+  footer p {
+    margin: 0;
+  }
+  
