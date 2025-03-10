@@ -63,6 +63,9 @@
     margin: 10px 0;
     font-size: 1.1rem;
   }
+  .map-container {
+    margin-top: 100px;
+  }
   
   .rsvp .form-container {
     background-color: #fff;
@@ -132,7 +135,7 @@
   }
   
   footer {
-    background-color: #F8EBE6;
+    background-color: #e6f1f8;
     color: #555;
     padding: 20px;
     text-align: center;
