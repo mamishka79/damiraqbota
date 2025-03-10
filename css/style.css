@@ -64,10 +64,6 @@
     margin: 10px 0;
     font-size: 1.1rem;
   }
-  .map-container {
-    margin-top: 100px;
-    padding-top: 100px;
-  }
   
   .rsvp .form-container {
     background-color: #fff;
@@ -147,29 +143,15 @@
     margin: 0;
   }
   
-.map-container {
-    max-width: 100%;
-    overflow: hidden;
-    padding: 0 10px;
+  .map-container {
+      max-width: 100%;
+      overflow: hidden;
+      padding-top: 100px;
   }
-  
+    
   .map-container iframe {
     width: 100%;
     height: auto;
     display: block;
     border: 0;
   }
-  
-.map-container {
-    max-width: 100%;
-    overflow: hidden;
-    padding: 0 10px;
-  }
-  
-  .map-container iframe {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 0;
-  }
-  
