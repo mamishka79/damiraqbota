@@ -5,33 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Дамир + Ақбота тойына шақыру</title>
 
-  <!-- Подключаем шрифты: Great Vibes, Playfair Display, Open Sans -->
+  <!-- Подключаем шрифты: Cookie, Great Vibes, Open Sans, Playfair Display, Grand Hotel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" 
-    rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
 
   <!-- AOS CSS для анимаций при скролле -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <!-- Подключаем наши стили -->
   <link rel="stylesheet" href="css/style.css" />
-  <!-- В head или в начале body -->
-  <audio id="bgMusic" src="../audio/background.mp3" autoplay loop muted>
-    Ваш браузер не поддерживает элемент audio.
-  </audio>
+
+  <!-- Фоновая музыка -->
+  <audio id="bgMusic" src="audio/background.mp3" autoplay muted loop></audio>
 
   <script>
-    // При первом клике пользователя снимаем мутинг и устанавливаем громкость
-    window.addEventListener('click', function unmute() {
-      var bgMusic = document.getElementById('bgMusic');
+    // Снимаем mute после первого клика пользователя
+    document.addEventListener('click', () => {
+      const bgMusic = document.getElementById('bgMusic');
       bgMusic.muted = false;
-      bgMusic.volume = 0.3; // Устанавливаем громкость на 30%
-      window.removeEventListener('click', unmute);
-    });
+    }, { once: true });
   </script>
+
 </head>
 <body>
   <!-- Шапка (Hero) -->
@@ -98,7 +95,6 @@
     </div>
   </section>
   
-
   <!-- Footer -->
   <footer data-aos="fade-up" data-aos-duration="1000">
     <p>© 2025 Дамир + Ақбота. Көріскенше тойда!</p>
@@ -110,26 +106,20 @@
     AOS.init();
   </script>
 
-  <!-- Основной скрипт (можно вынести в отдельный файл js/main.js) -->
+  <!-- Скрипт отправки формы -->
   <script>
-    // Вставьте сюда URL веб-приложения из Apps Script
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzsBfYoINtz8cqn-BoHwFCXSn2Jef2rip9Xp0Hso7AK0FK1cI7cOGvP6mzRrG9-3MWG_w/exec';
-
     async function submitForm(event) {
-      event.preventDefault(); // отменяем стандартное поведение формы
-
+      event.preventDefault();
       const form = document.getElementById('rsvpForm');
       const statusMessage = document.getElementById('statusMessage');
       statusMessage.textContent = '';
-
       const formData = new FormData(form);
-
       try {
         const response = await fetch(scriptURL, {
           method: 'POST',
           body: formData
         });
-
         const json = await response.json();
         if (json.result === 'success') {
           statusMessage.style.color = 'green';
